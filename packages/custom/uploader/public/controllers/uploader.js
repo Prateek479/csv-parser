@@ -25,7 +25,7 @@ angular.module('mean.uploader').controller('UploaderController', ['$scope', '$ht
     };
 
     $scope.genrateCrossTabulation = function(firstOption, secondOption) {
-      if (firstOption !== undefined && secondOption !== undefined) {
+      if (firstOption !== undefined && secondOption !== undefined && firstOption !== ' ' && secondOption !== ' ') {
         $scope.showTabulation = true;
         $scope.firstFilter = firstOption;
         $scope.secondFilter = secondOption;
@@ -36,7 +36,7 @@ angular.module('mean.uploader').controller('UploaderController', ['$scope', '$ht
           return item[secondOption];
         }).uniq().value();
       } else {
-        alert("please select field for cross tabulation");
+        alert('please select field for cross tabulation');
       }
     };
   }
