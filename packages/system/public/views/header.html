@@ -8,6 +8,9 @@
       <li data-ng-repeat="item in menus.main" ui-route="/{{item.link}}" ng-class="{active: $uiRoute}">
         <a mean-token="item.link" ui-sref='{{item.link}}'>{{item.title}}</a>
       </li>
+      <li>
+        <a href="/#!/uploader/example">Upload CSV</a>
+      </li>
     </ul>
   </div>
 

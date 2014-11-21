@@ -1,0 +1,64 @@
+<div class="" data-ng-controller="UploaderController">
+	<label>Choose a CSV File</label>
+	<input type="file" ng-file-select="uploadfile($files)" required>
+	<div ng-if="showTable">
+		<div class="file-result">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th data-ng-repeat="att in attributes">{{att}}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr data-ng-repeat="value in table">
+						<td data-ng-repeat="att in attributes">
+							{{value[att]}}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="cross-tabulation-field">
+			<form ng-submit="genrateCrossTabulation(firstOption,secondOption)">
+				<select  ng-change="setOption1(firstOption)" ng-model="firstOption">
+					<option value="">-- Select First Field --</option>
+					<option data-ng-repeat="att in attributes" value="{{att}}">
+						{{att}}
+					</option>
+				</select>
+				<select ng-change="setOption2(secondOption)" ng-model="secondOption">
+					<option value="">-- Select Second Field --</option>
+					<option data-ng-repeat="att in attributes" value="{{att}}">
+						{{att}}
+					</option>
+				</select>
+				<input type="submit" value="Cross Tabulation">
+			</form>
+			<div data-ng-if="showTabulation">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th></th>
+							<th data-ng-repeat="att in arr2">{{att}}</th>
+							<th>Total</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-ng-repeat="value in arr1">
+							<td>{{value}}</td>
+							<td data-ng-repeat="att in arr2">
+								{{(table | filter:value : true| filter:att : true ).length}}
+							</td>
+							<td>{{(table | filter:value : true ).length}}</td>
+						</tr>
+						<tr>
+							<td>Total</td>
+							<td data-ng-repeat="att in arr2">
+								{{(table | filter:att : true ).length}}
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
