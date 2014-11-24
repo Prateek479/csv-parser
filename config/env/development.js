@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = {
-  db: 'mongodb://localhost/mean-dev1',
-	debug: 'true',
+  db: : 'mongodb://cbtest:^4%})a@]|9?V?7C@ds051720.mongolab.com:51720/testdb',
+  debug: 'true',
   mongoose: {
     debug: false
   },
